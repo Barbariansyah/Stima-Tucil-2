@@ -1,14 +1,64 @@
 import java.io.*;
 import java.util.*;
 
-class Main {
+public class Main {
+	
+	static void title() {
+System.out.println("        _");
+System.out.println("       ;`',							");
+System.out.println("       `,  `,						");
+System.out.println("        ',   ;   ,,-====..,         ");
+System.out.println("         \\    ','          \\        ");
+System.out.println(" ,-'''-., ;    '    __.-=-.;		");
+System.out.println(",\" ,,_    \"V      _.\"				");
+System.out.println(";,'   ''-,         \"=--,_		");
+System.out.println("     ,-''    _  _       `,		");
+System.out.println("    /   ,.-+(_)(_)´--.,   ;		");
+System.out.println("   ,'  /   ; (_)       `\\ ,		");
+System.out.println("   ; ,/    ;._.;         ;		");
+System.out.println("   !,'     ;   ;		  ===============================================	");
+System.out.println("   V'      ;   ;		  |   	Dalam rat race orang2 maniak ini,	|");
+System.out.println("           ;._.;		  |	Kalau seorang programmer terpaku        |");
+System.out.println("           ;   ;		  |     terus matanya ke layar komputer,        |");
+System.out.println("           ;   ;        ~         |	  Apa bedanya dia ada di kelas dengan   |");
+System.out.println("~          ;._.;		  |       tersesat di Lonely Island?            |");
+System.out.println("      ~    ;   ;		  ===============================================		");
+System.out.println("          .´   `.                ~ ");
+System.out.println("    __,.--;.___.;--.,___			");
+System.out.println("_,,-\"\"      ;     ;       \"\"-,,_			");
+System.out.println(".-´´            ;     ;             ``-.		");
+System.out.println("\",              ´       `               ,\"    ");
+System.out.println("\"-_                                _-\"		");
+ 	
+System.out.println(" _                       _          ");
+System.out.println("| |                    | |      	");
+System.out.println("| |     ___  _ __   ___| |_   _ 	");
+System.out.println("| |    / _ \\| '_ \\ / _ \\ | | | |	");
+System.out.println("| |___| (_) | | | |  __/ | |_| |	");
+System.out.println("\\_____/\\___/|_| |_|\\___|_|\\__, |	");
+System.out.println("                          _ _/ |	");
+System.out.println("                          |___/ 	");
+
+System.out.println(" _____    _                 _ 	");
+System.out.println("|_   _|  | |               | |	");
+System.out.println("  | | ___| | __ _ _ __   __| |  ");
+System.out.println("  | |/ __| |/ _` | '_ \\ / _` |	");
+System.out.println(" _| |\\__ \\ | (_| | | | | (_| |	");
+System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
+                             
+
+	}
 	
 	public static void main(String args[]) throws IOException {
+		
+		//title
+		title();
 		
 		String fileName;
 		Scanner sc = new Scanner(System.in);
 		//File Input
-		System.out.print("File Name: ");
+		System.out.println("");
+		System.out.print("Please enter your file name: ");
 		fileName = sc.nextLine();
 		System.out.println("Reading "+fileName);
 		System.out.println("");
@@ -43,5 +93,20 @@ class Main {
 			System.out.print("Island "+i+" directs to: ");
 			System.out.println(A.adj[i]);
 		}
+		
+		//Code execution for last resort island(s)
+		LinkedList<Integer> resort; 
+		
+		resort = BreadthFirst.lastResort(A,1);
+		Collections.sort(resort);
+		
+		Iterator<Integer> i = resort.iterator();
+		while(i.hasNext()){
+			System.out.print(i.next()+" ");
+		}
+		System.out.println("\n");
+		
+		//System.out.println(resort);
+
 	}
 }

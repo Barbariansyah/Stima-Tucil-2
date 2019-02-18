@@ -6,21 +6,20 @@ import java.io.*;
 
 
 
-class Island {
+public class Island {
 
-	private int N; //number of islands
+	public int N; //number of islands
 	public LinkedList<Integer> adj[]; //Array of Adjacency Linked List
 	// adj[u]: array of adjacency from u
 	// [i1, i2, ...] to i1, i2, ...
 	
 	//Island Constructor
-	Island(int m){
-		N = m; //m islands
+	Island(int n){
+		N = n; //m islands
 		adj = new LinkedList[N+1]; //N LinkedLists
 		adj[0] = null;
-		for (int i = 1 ; i <= m ; i++) {
+		for (int i = 1 ; i <= n ; i++) {
 			adj[i] = new LinkedList();
-			//System.out.println(i);
 			}
 		System.out.println("Constructor Activated "+ N +" Island(s)");
 	}
@@ -40,14 +39,14 @@ class Island {
 	
 	
 	//Class tests
-	public static void main(String args[]){
+	/*public static void main(String args[]){
 		
 		Island a = new Island(5);
 		
 		a.addBridge(1, 3);
 		a.addBridge(3, 5);
 		a.addBridge(5, 1);
-	}
+	}*/
 
 	
 }
