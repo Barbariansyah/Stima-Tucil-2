@@ -52,7 +52,7 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 	public static void main(String args[]) throws IOException {
 		
 		//title
-		title();
+		//title();
 		
 		String fileName;
 		Scanner sc = new Scanner(System.in);
@@ -94,18 +94,28 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 			System.out.println(A.adj[i]);
 		}
 		
-		//Code execution for last resort island(s)
-		LinkedList<Integer> resort; 
+		A.LastResort(1);
 		
-		resort = BreadthFirst.lastResort(A,1);
-		Collections.sort(resort);
 		
-		Iterator<Integer> i = resort.iterator();
+		Iterator<Integer> i = A.LonelyIsland.iterator();
 		while(i.hasNext()){
 			System.out.print(i.next()+" ");
 		}
 		System.out.println("\n");
 		
+		for (int k = 0; k < A.J ; k++) {
+			System.out.print("[");
+			Iterator<Integer> j = A.paths[k].listIterator(); 
+	        while (j.hasNext()) 
+	        { 	
+	        	int e = j.next();
+	            System.out.print(e);
+	            if (j.hasNext()) {
+	            	System.out.print("-> ");
+	            }
+	        }
+	        System.out.println("]");
+		}
 		//System.out.println(resort);
 
 	}
