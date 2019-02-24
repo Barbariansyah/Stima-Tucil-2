@@ -103,8 +103,8 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 		}
 		System.out.println("\n");
 		
-		for (int k = 0; k < A.J ; k++) {
-			System.out.print("[");
+		/*for (int k = 0; k < A.J ; k++) {
+			System.out.prints("[");
 			Iterator<Integer> j = A.paths[k].listIterator(); 
 	        while (j.hasNext()) 
 	        { 	
@@ -115,7 +115,10 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 	            }
 	        }
 	        System.out.println("]");
-		}
+		}*/
+		
+		System.out.println(A.allPaths);
+		
 		//System.out.println(resort);
 
 	}

@@ -14,18 +14,17 @@ public class Island {
 	// [i1, i2, ...] to i1, i2, ...
 	public LinkedList<Integer> LonelyIsland;//List of Lonely Island
 	public LinkedList<Integer> path;//Temporary list for path enumeration
-	public LinkedList<Integer> paths[];//List of path enumeration
-	public int J;//Iterator for pa
+	public LinkedList<LinkedList<Integer>> allPaths;//List of path enumeration
+	
 	
 	//Island Constructor
 	Island(int n){
 		N = n; //m islands
-		J = 0;
 		adj = new LinkedList[N+1]; //N LinkedLists
 		adj[0] = null; 
 		LonelyIsland = new LinkedList();
 		path = new LinkedList();
-		paths = new LinkedList[Integer.MAX_VALUE];
+		allPaths = new LinkedList<>();
 		
 		for (int i = 1 ; i <= n ; i++) {
 			adj[i] = new LinkedList();
@@ -66,6 +65,9 @@ public class Island {
 	}
 	
 	void DFS(int i, boolean flag[]) {
+		
+		LinkedList tempList = new LinkedList();
+		
 		//Flag island as visited
 		System.out.println("Starting DFS at " + i);
 		flag[i] = true;
@@ -77,8 +79,11 @@ public class Island {
 			//Add to List of Lonely Island(s)
 			LonelyIsland.add(i);
 			//Assigning and then Moving to the next list of path
-			paths[J] = (LinkedList) path.clone();
-			J++;
+			System.out.println(path);
+			
+			tempList = (LinkedList) path.clone();			
+			allPaths.add(tempList);
+			
 		}
 		
 		//Recursive for all bridges
