@@ -76,7 +76,8 @@ public class Island {
 		
 		if (NoAvailBridge(i,flag)) {
 			//Add to List of Lonely Island(s)
-			LonelyIsland.add(i);
+			if(!LonelyIsland.contains(i)){
+			LonelyIsland.add(i);}
 			//Assigning and then Moving to the next list of path
 			
 			tempList = (LinkedList) path.clone();			
@@ -106,7 +107,8 @@ public class Island {
 		boolean flag[] = new boolean[N+1];
 		
 		//Depth first search implementation
-		System.out.println("Starting DFS");
+		System.out.println("Starting DFS..");
+		System.out.println("");
 		DFS(i,flag);	
 	}
 	

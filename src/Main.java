@@ -81,6 +81,7 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 		m = fsc.nextInt();
 		r = fsc.nextInt();
 		
+		long startTime = System.nanoTime();
 		//Island initialisation
 		Island A = new Island(n);
 		
@@ -106,15 +107,19 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 		
 		//Find all lonely island(s) and enumeration
 		A.LastResort(r);
+		long endTime = System.nanoTime();
 		
-		
+		System.out.println("==================================");
+		System.out.println("");
+		System.out.println("Lonely Island(s): ");
 		Iterator<Integer> i = A.LonelyIsland.iterator();
 		while(i.hasNext()){
 			System.out.print(i.next()+" ");
 		}
 		
 		System.out.println("\n");
-		System.out.println("Paths enumeration: ");
+		
+		System.out.println("Path(s) enumeration:");
 		Iterator<LinkedList<Integer>> j = A.allPaths.iterator();
 		while(j.hasNext()){
 			Iterator<Integer> k = j.next().iterator();
@@ -127,6 +132,10 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 			}
 			System.out.println("]");
 		}
+		
+		//Execution time
+		System.out.println("");
+		System.out.println("Executed in " + (endTime - startTime)/1000000 + " milliseconds");
 	
 	}
 }
