@@ -2,6 +2,7 @@
 //13517081
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.io.*;
 
 
@@ -69,20 +70,18 @@ public class Island {
 		LinkedList tempList = new LinkedList();
 		
 		//Flag island as visited
-		System.out.println("Starting DFS at " + i);
 		flag[i] = true;
 		path.add(i);
-		
 		
 		
 		if (NoAvailBridge(i,flag)) {
 			//Add to List of Lonely Island(s)
 			LonelyIsland.add(i);
 			//Assigning and then Moving to the next list of path
-			System.out.println(path);
 			
 			tempList = (LinkedList) path.clone();			
 			allPaths.add(tempList);
+			
 			
 		}
 		
@@ -91,7 +90,7 @@ public class Island {
         while (n.hasNext()) 
         { 
             int m = n.next(); 
-            if (!flag[m]) { 
+            if (!flag[m]) {
                 DFS(m, flag);} 
         }
 		
@@ -99,7 +98,6 @@ public class Island {
 		//Flag island as unvisited for backtracking
 		flag[i] = false;
 		path.removeLast();
-		System.out.println("Unflagged " + i);
 	}
 	
 	//Find all lonely island(s) and enumeration to the island(s) 

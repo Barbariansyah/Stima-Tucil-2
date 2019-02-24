@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main implements Runnable{
 	
 	static void title() {
 System.out.println("        _");
@@ -49,10 +49,14 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 
 	}
 	
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) {
+		new Thread(null, new Main(), "thread1", 1<<26).start();//setting stack size for depth first search
+	}
+
+	public void run() {
 		
 		//title
-		//title();
+		title();
 		
 		String fileName;
 		Scanner sc = new Scanner(System.in);
@@ -63,7 +67,13 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 		System.out.println("Reading "+fileName);
 		System.out.println("");
 		
-		Scanner fsc = new Scanner(new File(fileName));
+		Scanner fsc = null;
+		
+		try {
+			fsc = new Scanner(new File(fileName));
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found!");
+		}
 		
 		int n, m, r;
 		
@@ -94,32 +104,29 @@ System.out.println(" \\___/___/_|\\__,_|_| |_|\\__,_|	");
 			System.out.println(A.adj[i]);
 		}
 		
-		A.LastResort(1);
+		//Find all lonely island(s) and enumeration
+		A.LastResort(r);
 		
 		
 		Iterator<Integer> i = A.LonelyIsland.iterator();
 		while(i.hasNext()){
 			System.out.print(i.next()+" ");
 		}
+		
 		System.out.println("\n");
-		
-		/*for (int k = 0; k < A.J ; k++) {
-			System.out.prints("[");
-			Iterator<Integer> j = A.paths[k].listIterator(); 
-	        while (j.hasNext()) 
-	        { 	
-	        	int e = j.next();
-	            System.out.print(e);
-	            if (j.hasNext()) {
-	            	System.out.print("-> ");
-	            }
-	        }
-	        System.out.println("]");
-		}*/
-		
-		System.out.println(A.allPaths);
-		
-		//System.out.println(resort);
-
+		System.out.println("Paths enumeration: ");
+		Iterator<LinkedList<Integer>> j = A.allPaths.iterator();
+		while(j.hasNext()){
+			Iterator<Integer> k = j.next().iterator();
+			System.out.print("[");
+			while(k.hasNext()) {
+				System.out.print(k.next());
+				if(k.hasNext()) {
+					System.out.print("-> ");
+				}
+			}
+			System.out.println("]");
+		}
+	
 	}
 }
